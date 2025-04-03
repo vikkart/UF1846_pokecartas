@@ -24,43 +24,46 @@ function getPokemonData($pokerandom)
         'foto' => $pokedata['sprites']['front_default'],
         'PokeId' => $pokedata["id"],
         'PokeTipos'=> $tipos, 
+        'tipos'=> $tipos,
         'habilidades' => $habilidades
     ];
     return $pokemon;
 }
 function renderCards(){
     // 1) genera número aleatorio
+    
+    echo "<section id='pokcartase' class='allpokemons'>";
     $pokerandom = [rand(1, 151), rand(1, 151), rand(1, 151), rand(1, 151)]; 
     foreach ($pokerandom as $singlepokemon){ 
         $pokemon= getPokemonData($singlepokemon);
     // recibe datos y genera el html
     //var_dump($pokemon);
-    echo "<section id='pokcartase'>";
-        echo "    <div class='carta'>";
-    echo "    <div>";
-    echo "        <p>{$pokemon['PokeId']}</p>";
-    echo "    </div>";
-    echo "        <div class='img-container'>";
-    echo "            <img src='{$pokemon['foto']}' alt='{$pokemon['nombre']}'>";
-    echo "        </div>";
-    echo "        <div class='datos'>";
-    echo "            <h3>{$pokemon['nombre']}</h3>";
-    echo "            <div class='tipos-pokemon'>";
+    $tiposClase = implode(' ', $pokemon['PokeTipos']);
+        echo "    <div class='carta $tiposClase'>";
+        echo "    <div class='nombre'>        <h3>{$pokemon['nombre']}</h3> </div>";
+        echo "        <div class='img-container'>";
+        echo "            <img src='{$pokemon['foto']}' alt='{$pokemon['nombre']}'>";
+        echo "        </div>";
+        echo "        <div class='datos'>";
+        echo "            <div class='tipos-pokemon'>";
         foreach ($pokemon['PokeTipos'] as $tipo) {
-        echo "                <span>$tipo</span>";
-    }
-    echo "            </div>";
-    echo "            <ul class='habilidades'>";
+            echo "                <span>$tipo</span>";
+        }
+        echo "            </div>";
+        echo "            <ul class='habilidades'>";
         foreach ($pokemon['habilidades'] as $habilidad) {
-        echo "                 <li>$habilidad</li>";
-    }
-    echo "                <li>impactrueno</li>";
-    echo "            </ul>";
-    echo "         </div>";
+            echo "                 <li>$habilidad</li>";
+        }
+        echo "                <li>impactrueno</li>";
+        echo "            </ul>";
+        echo "         </div>";
+        echo "    <div class='id'>";
+        echo "        <p>{$pokemon['PokeId']}</p>";
+        echo "    </div>";
     echo "    </div>";
     echo "";
-    echo "</section>";
 }
+echo "</section>";
 }
 ?>
 
@@ -76,8 +79,11 @@ function renderCards(){
 
 <body>
     <h1>PokeCartas</h1>
-    <?php renderCards(); ?>
-    <input type="button" value="Generar pokemon" onclick="location.reload();">
+    <?php renderCards(); 
+    ?>
+    <div class='divboton'>
+    <input type="button" id='boton' value="Generar pokemon" onclick="location.reload();">
+    </div>
 </body>
 
 </html>

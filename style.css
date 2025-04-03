@@ -1,15 +1,24 @@
-* {
+
+/* ctrl shift r recargar el caché */
+*{
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
 }
-
 .carta {
     max-width: 200px;
     padding: 16px;
     border-radius: 12px;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+    border-color: black;
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
 }
+.allpokemons{
+    display: flex;
+    justify-content: center;
 
+}
 .img-container {
     width: 100%;
     display: flex;
@@ -17,13 +26,57 @@
     align-items: center;
     border-radius: 12px;
     border: 1px solid #e5e5e5;
+    background-color: antiquewhite;
 
 }
+h3{
+    margin: 0;
+}
+.habilidades{
+    border-color: black;
+    background-color: whitesmoke;
+    margin: 2px;
+    border-radius: 10px;
+}
+ul{
+    padding: 10px;
+    list-style: none;
+}
 
+.nombre{
+    background-color:rgb(193, 252, 165) ;
+    border-color: black;
+    border-radius: 10px;
+    text-align: center;
+}
+.id{
+    /* display: flex; */
+    justify-self: end;
+    margin-top: auto;
+
+    p{
+        background-color: black;
+        color: white;
+        border-radius: 20px;
+        padding: 4px 8px 2px;
+        border-right: 8px;
+    }
+}
+#boton{
+    padding: 12px;
+    font-family: fantasy;
+    background-color: salmon;
+    border-radius: 10px;
+}
+.divboton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .tipos-pokemon {
     display: flex;
     gap: 8px;
-    
+
     span {
         background-color: #aaa;
         border-radius: 24px;
@@ -32,3 +85,21 @@
         padding: 4px 8px;
     }
 }
+
+.grass{
+    background-color: green;
+}
+.electric{
+    background-color: yellow;
+}
+.water{
+    background-color: blue;
+}
+.normal{
+    background-color: grey;
+}
+.fire{
+    background-color: red;
+}
+
+
